@@ -1,19 +1,22 @@
 import pandas as pd
+import plotly.express as px
+import streamlit as st
 
-
-
-df = pd.read_excel(
-    io='/home/amina/Desktop/per/python-programs/dashboard_one/facilities.xlsx',
-    engine="openpyxl",
-    sheet_name="Tracking Covid-19 in Prisons Facilities",
-    skiprows=3,
-    #usecols="B:R",
-    nrows=2640,
+st.set_page_config(
+    page_title="Covid-19 Cases in Prison Facilities Dashboard",
+    page_icon=":mask:",
+    layout='wide'
 )
 
-with open('/home/amina/Desktop/per/python-programs/dashboard_one/facilities.xlsx', 'wb') as outFile:
-    outFile.write(df)
-    outFile.close()   # was missing this
-    with zipfile.ZipFile('/home/amina/Desktop/per/python-programs/dashboard_one/facilities.xlsx', 'r') as zip:
-        zip.extractall(destination)
-print(df)
+#copy entire path otherwise streamlit localhost would not read it
+df = pd.read_csv('/home/amina/Desktop/per/python-programs/dashboard_one/facilities.csv')
+
+#cases_in_alabama = df[(df['facility_state'] == 'Alabama')]
+
+st.dataframe(df)
+
+#print(len(df))
+
+#FOR VISUALAZATION: pip install plotly-express
+
+#print(df.head())
