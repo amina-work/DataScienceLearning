@@ -77,13 +77,24 @@ fig_cases_per_facility = px.bar(
     y=cases_per_facility_type.index,
     orientation="h",
     title="<b>Cases Per Facility Type</b>",
-    color_discrete_sequence=["#0083B8"] * len(cases_per_facility_type),
+    color_discrete_sequence=["#9CC5A1"] * len(cases_per_facility_type),
     template="plotly_white",
     height=700,
 )
 
 
 st.plotly_chart(fig_cases_per_facility)
+
+
+# ------ HIDE STREAMLIT STYLE -------
+hide_st_styles = """
+                <style>
+                #MainMenu {visibility:hidden;}
+                footer {visibility:hidden:}
+                header {visibility:hidden:}
+                </style>
+                """
+st.markdown(hide_st_styles, unsafe_allow_html=True)
 #print(len(df))
 
 #FOR VISUALAZATION: pip install plotly-express
